@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <title>{% block title %} {% endblock title %}</title>
+    <meta name="keywords" content="Books, recent, Learning, library">
+    <meta name="description" content="Books website">
+    <meta name="author" content="author name">
+    
+    <!-- أيقونة الموقع -->
+    <link rel="icon" href="{% static 'qu-icon.png' %}">
+    <meta charset="UTF-8">
+
+    <!-- ربط ملف CSS -->
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+
+    {% block stylesheets %}{% endblock stylesheets %}
+</head>
+<body>
+
+    <!-- استدعاء الهيدر -->
+    {% include "includes/header.html" %}
+
+    <!-- محتوى الصفحة (يتم استبداله من كل صفحة فرعية) -->
+    {% block content %} {% endblock content %}
+
+    <!-- استدعاء الفوتر -->
+    {% include "includes/footer.html" %}
+
+</body>
+</html>
