@@ -1,0 +1,214 @@
+/* تنسيق عام لجميع الروابط */
+.styled-link {
+    text-decoration: none;
+    text-align: center;
+    display: block;
+    padding: 15px;
+    font-size: 18px;
+    transition: all 0.3s ease-in-out;
+}
+
+/* تنسيق الخلفيات المختلفة */
+.green-bg {
+    background-color: #b0ffb0;
+}
+
+.gray-bg {
+    background-color: #444;
+}
+
+.black-bg {
+    background-color: #000;
+}
+
+/* تنسيق ألوان النصوص */
+.red-text {
+    color: red;
+    font-weight: bold;
+}
+
+.yellow-text {
+    color: gold;
+}
+
+.white-text {
+    color: white;
+    font-weight: bold;
+}
+
+/* تأثير hover */
+.styled-link:hover {
+    opacity: 0.7;
+}
+
+/* تأثير عند الضغط */
+.styled-link:active {
+    color: blue;
+    transform: scale(1.05);
+}
+/* تنسيق عنوان الصفحة */
+.format-title {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: left;
+    background-color: #f5f5dc; /* لون بيج */
+    padding: 10px;
+    border-left: 5px solid green; /* خط أخضر على اليسار */
+}
+
+/* تحسين تنسيق النصوص */
+mark {
+    background-color: yellow;
+    padding: 2px;
+}
+
+del {
+    text-decoration: line-through;
+    color: black;
+}
+
+ins {
+    text-decoration: underline;
+    color: black;
+}
+
+sub, sup {
+    font-size: 12px;
+    color: gray;
+}
+/* تنسيق عنوان القائمة */
+.listing-title {
+    font-size: 26px;
+    font-weight: bold;
+    text-align: left;
+    background-color: #5F9EA0; /* لون مشابه لما في الصورة */
+    color: white;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+/* تحسين مظهر القوائم */
+ul, ol {
+    font-size: 18px;
+    margin-left: 20px;
+}
+
+/* تخصيص القوائم المتداخلة */
+ul li {
+    margin-bottom: 8px;
+}
+
+ol {
+    margin-left: 30px;
+}
+/* تنسيق الجداول */
+.styled-table {
+    width: 60%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+.styled-table th, .styled-table td {
+    border: 1px solid black;
+    padding: 12px;
+}
+
+.styled-table th {
+    background-color: #ddd;
+    font-weight: bold;
+}
+
+.styled-table td img {
+    display: block;
+    margin: auto;
+    border-radius: 8px;
+}
+
+/* تحسين عنوان الجداول */
+.table-title {
+    font-size: 22px;
+    font-weight: bold;
+    text-align: center;
+    margin: 20px 0;
+}
+/* تحسين تنسيق العناوين */
+.table-title {
+    font-size: 22px;
+    font-weight: bold;
+    text-align: center;
+    margin: 20px 0;
+}
+
+/* تحسين تنسيق الجداول */
+.styled-table {
+    width: 80%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+.styled-table th, .styled-table td {
+    border: 2px solid black;
+    padding: 12px;
+}
+
+.styled-table th {
+    background-color: #ddd;
+    font-weight: bold;
+}
+
+/* تحسين مظهر الصورة داخل الجدول */
+.styled-table td img {
+    display: block;
+    margin: auto;
+    border-radius: 8px;
+    max-width: 100%;
+    height: auto;
+}
+/* تنسيق الجداول */
+table {
+    width: 80%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+/* حدود الجدول */
+table, th, td {
+    border: 2px solid black;
+}
+
+/* تنسيق العناوين */
+th {
+    background-color: #D3D3D3;
+    font-weight: bold;
+    padding: 10px;
+}
+
+/* تنسيق خلايا الجدول */
+td {
+    padding: 10px;
+}
+
+/* تنسيق عنوان الجدول */
+caption {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* تنسيق الصورة في الجدول الثاني */
+.desert-image {
+    width: 200px; 
+    height: auto;
+    display: block;
+    margin: auto;
+}
+
+/* تنسيق الصفوف المتداخلة */
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
