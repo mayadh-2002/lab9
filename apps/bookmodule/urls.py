@@ -1,8 +1,8 @@
 import apps.bookmodule.views
 from django.urls import path
 from . import views
-
-
+from .views import add_book, simple_query
+from .views import  add_test_book , complex_query
 """
 URL configuration for libraryproject project.
 
@@ -21,7 +21,8 @@ Including another URLconf
 """
 from django.urls import path
 from . import views
-
+from .views import add_book
+from .views import simple_query
 urlpatterns = [
     path('', views.index, name="books.index"),  
     path('list_books/', views.list_books, name="books.list_books"),
@@ -32,5 +33,8 @@ urlpatterns = [
    path('html5/text/formatting', views.text_formatting, name='text_formatting'),
 path('html5/listing', views.listing, name='listing'),
 path('html5/tables', views.tables, name='tables'),
-
+path('add/', add_book),
+path('simple/query', simple_query),
+path('add/test/', add_test_book),
+ path('complex/query', complex_query),
 ]

@@ -1,18 +1,16 @@
-{% extends "layouts/base.html" %}
-{% block title %} Search Results {% endblock title %}
-
-{% block content %}
-<h2>Search Results</h2>
-
-{% if books %}
-    <ul>
-        {% for book in books %}
-            <li><strong>{{ book.title }}</strong> - {{ book.author }}</li>
-        {% endfor %}
-    </ul>
-{% else %}
-    <p>No books found matching your search criteria.</p>
-{% endif %}
-
-<a href="{% url 'search_books' %}">Back to Search</a>
-{% endblock content %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Books List</title>
+</head>
+<body>
+    <h1>Books Matching "and"</h1>
+    {% for obj in books %}
+        <p>ID: {{ obj.id }}<br>
+        Title: {{ obj.title }}</p>
+        <hr>
+    {% empty %}
+        <p>No books found.</p>
+    {% endfor %}
+</body>
+</html>

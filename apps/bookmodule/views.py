@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-   
+from .models import Book
+
 
 def index(request):
     return render(request, "bookmodule/index.html")
@@ -45,3 +46,31 @@ def listing(request):
 
 def tables(request):
     return render(request, 'bookmodule/html5/tables.html')
+
+def add_book(request):
+    Book.objects.create(title='Continuous Delivery', author='J.Humble and D. Farley', price=120.00, edition=3)
+    Book.objects.create(title='Reversing: Secrets of Reverse Engineering', author='E. Eilam', price=97.00, edition=2)
+    Book.objects.create(title='The Hundred-Page Machine Learning Book', author='Andriy Burkov', price=100.00, edition=4)
+    return HttpResponse("Books added successfully!")
+
+def simple_query(request):
+    mybooks = Book.objects.filter(title__icontains='and')
+    return render(request, 'bookmodule/bookList.html', {'books': mybooks})
+
+def add_test_book(request):
+    Book.objects.create(title='Code and Culture', author='Jane Doe', price=85.0, edition=2)
+    return HttpResponse("Test book added!")
+
+
+def complex_query(request):
+    mybooks = Book.objects.filter(
+        author__isnull=False,
+        title__icontains='and',
+        edition__gte=2
+    ).exclude(price__lte=100)[:10]
+
+    if mybooks:
+        return render(request, 'bookmodule/bookList.html', {'books': mybooks})
+    else:
+        return render(request, 'bookmodule/index.html')
+
