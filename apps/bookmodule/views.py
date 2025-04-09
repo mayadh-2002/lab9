@@ -1,6 +1,9 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import Book
+from .models import Book, Student
+from django.db.models import Q
+from django.db.models import Sum, Avg, Max, Min
+from django.db import models  
 
 
 def index(request):
@@ -60,7 +63,7 @@ def simple_query(request):
 def add_test_book(request):
     Book.objects.create(title='Code and Culture', author='Jane Doe', price=85.0, edition=2)
     return HttpResponse("Test book added!")
-
+ 
 
 def complex_query(request):
     mybooks = Book.objects.filter(
@@ -72,5 +75,44 @@ def complex_query(request):
     if mybooks:
         return render(request, 'bookmodule/bookList.html', {'books': mybooks})
     else:
-        return render(request, 'bookmodule/index.html')
+      return render(request, 'bookmodule/index.html')
+    
+def task1(request):
+     books=Book.objects.filter(Q(price__lte = 80)) 
+     return render(request, 'bookmodule/bookList.html', {'books':books})
+def task2(request):
+    books = Book.objects.filter(
+        Q(edition__gt=3) & (Q(title__icontains='co') | Q(author__icontains='co'))
+    )
+    return render(request, 'bookmodule/booklist.html', {'books': books})
+def task3(request):
+    books = Book.objects.filter(
+        Q(edition__lte=3) & ~(
+            Q(title__icontains='co') | Q(author__icontains='co')
+        )
+    )
+    return render(request, 'bookmodule/booklist.html', {'books': books})
+def task4(request):
+    books = Book.objects.all().order_by('title')  
+    return render(request, 'bookmodule/booklist.html', {'books': books})
+def task5(request):
+    # استخدام الدوال التجميعية (aggregation functions)
+    total_books = Book.objects.count()  # عدد الكتب
+    total_price = Book.objects.aggregate(Sum('price'))['price__sum']   
+    average_price = Book.objects.aggregate(Avg('price'))['price__avg']  
+    max_price = Book.objects.aggregate(Max('price'))['price__max']  
+    min_price = Book.objects.aggregate(Min('price'))['price__min']  
 
+    context = {
+        'total_books': total_books,
+        'total_price': total_price,
+        'average_price': average_price,
+        'max_price': max_price,
+        'min_price': min_price
+    }
+
+    return render(request, 'bookmodule/booklist.html', context)
+def task7(request):
+    city_counts = Student.objects.values('address__city').annotate(count=models.Count('id'))
+
+    return render(request, 'bookmodule/city_student_count.html', {'city_counts': city_counts})

@@ -1,3 +1,4 @@
+
 import apps.bookmodule.views
 from django.urls import path
 from . import views
@@ -36,5 +37,11 @@ path('html5/tables', views.tables, name='tables'),
 path('add/', add_book),
 path('simple/query', simple_query),
 path('add/test/', add_test_book),
- path('complex/query', complex_query),
+path('complex/query', complex_query),
+path('lab8/task1', views.task1, name='task1'),
+path('lab8/task2', views.task2, name='task2'),
+path('lab8/task3', views.task3, name='task3'),
+path('lab8/task4', views.task4, name='task4'),
+path('lab8/task5', views.task5, name='task5'),
+path('lab8/task7', views.task7, name='task7'),
 ]

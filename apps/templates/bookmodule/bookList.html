@@ -1,16 +1,18 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Books List</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Aggregations</title>
 </head>
 <body>
-    <h1>Books Matching "and"</h1>
-    {% for obj in books %}
-        <p>ID: {{ obj.id }}<br>
-        Title: {{ obj.title }}</p>
-        <hr>
-    {% empty %}
-        <p>No books found.</p>
-    {% endfor %}
+    <h1>Book Aggregations</h1>
+    <ul>
+        <li>Total Books: {{ total_books }}</li>
+        <li>Total Price: ${{ total_price }}</li>
+        <li>Average Price: ${{ average_price }}</li>
+        <li>Maximum Price: ${{ max_price }}</li>
+        <li>Minimum Price: ${{ min_price }}</li>
+    </ul>
 </body>
 </html>

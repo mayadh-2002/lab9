@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Students in Each City</title>
+</head>
+<body>
+    <h1>Number of Students in Each City</h1>
+    <ul>
+        {% for city in city_counts %}
+            <li>{{ city.address__city }}: {{ city.count }} students</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
