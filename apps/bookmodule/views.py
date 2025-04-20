@@ -1,10 +1,11 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import Book, Student
-from django.db.models import Q
-from django.db.models import Sum, Avg, Max, Min
-from django.db import models  
+from .models import Book,Student,Student1
 
+from django.db.models import Q
+from django.db.models import Sum, Avg, Max, Min,Count
+from django.db import models  
+from .models import Department,Course
 
 def index(request):
     return render(request, "bookmodule/index.html")
@@ -116,3 +117,28 @@ def task7(request):
     city_counts = Student.objects.values('address__city').annotate(count=models.Count('id'))
 
     return render(request, 'bookmodule/city_student_count.html', {'city_counts': city_counts})
+
+def task1_view(request):
+    departments = Department.objects.annotate(student_count=Count('student1'))
+    return render(request, 'bookmodule/task1.html', {'departments': departments})  
+
+def task2_view(request):
+    courses = Course.objects.annotate(student_count=Count('student1'))
+    return render(request,'bookmodule/task2.html', {'courses': courses})
+def task3_view(request):
+    departments = Department.objects.all()
+    oldest_students = []
+
+    for dept in departments:
+        student = Student1.objects.filter(department=dept).order_by('id').first()
+        oldest_students.append({
+            'department': dept.name,
+            'student': student.name if student else 'No students'
+        })
+
+    return render(request, 'bookmodule/task3.html', {'data': oldest_students})
+def task4_view(request):
+    departments = Department.objects.annotate(student_count=Count('student1')) \
+                                    .filter(student_count__gt=2) \
+                                    .order_by('-student_count')
+    return render(request, 'bookmodule/task4.html', {'departments': departments})
